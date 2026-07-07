@@ -164,14 +164,15 @@ export function ProfileSubmissionsGrid({
         {items.map((submission) => (
           <article
             key={submission.id}
-            className="overflow-hidden rounded-xl bg-black/[0.04] p-5 text-left transition hover:bg-black/[0.06]"
+            className="overflow-hidden rounded-xl border border-black/10 p-5 text-left transition hover:border-black/40"
           >
             <h3 className="mb-4 text-base font-medium leading-tight text-ink">
               {submission.themeLabel}
             </h3>
 
             <div className="mb-5 grid grid-cols-2 gap-3">
-              <div className="flex items-center justify-between rounded-lg border border-black/5 px-2 py-2 sm:px-5">
+            <div className="flex items-center justify-between rounded-lg border border-black/5 px-2 py-2 sm:px-5">
+              
                 <p className="text-xs text-black/35 sm:text-xs">
                   {t("scoreLabel")}
                 </p>
@@ -193,13 +194,13 @@ export function ProfileSubmissionsGrid({
             <button
               type="button"
               onClick={() => setOpened(submission)}
-              className="relative block aspect-[16/10] w-full overflow-hidden rounded-lg bg-black/10"
+              className="relative block aspect-[4/5] w-full overflow-hidden rounded-lg bg-black/10"
             >
               <Image
                 src={submission.imageUrl}
                 alt={submission.themeLabel}
                 fill
-                className="object-cover"
+                className="object-cover object-top"
                 sizes="(max-width: 768px) 100vw, 25vw"
                 unoptimized
               />

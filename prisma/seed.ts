@@ -25,14 +25,19 @@ const themes: {
 
 async function main() {
   console.log("Seed des thèmes…");
+
+  // Désactive d'abord tout : les thèmes retirés de la liste disparaîtront
+  // du tirage (sans être supprimés, pour préserver l'historique des manches).
+  await prisma.theme.updateMany({ data: { active: false } });
+
   for (const t of themes) {
     await prisma.theme.upsert({
       where: { id: t.labelFr },
-      update: { category: t.category },
-      create: { id: t.labelFr, ...t },
+      update: { ...t, active: true },   // applique TOUS les champs, pas que la catégorie
+      create: { id: t.labelFr, ...t, active: true },
     });
   }
-  console.log(`${themes.length} thèmes en base.`);
+  console.log(`${themes.length} thèmes actifs en base.`);
 }
 
 main()

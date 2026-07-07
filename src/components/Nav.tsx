@@ -40,11 +40,19 @@ const profileLabel = user?.username ?? user?.name ?? "Profil";
     >
      <nav className="mx-auto flex max-w-[2000px] items-center justify-between gap-4 px-4 pt-9 pb-5 sm:px-8">
         {/* Gauche : réalisé par */}
-        <div className="hidden flex-col leading-tight sm:flex">
+  {/* Gauche : réalisé par */}
+  <div className="hidden flex-col leading-tight sm:flex">
           <span className="text-[10px] uppercase tracking-wide text-white/50">
             {t("madeBy")}
           </span>
-          <span className="font-display text-sm font-bold">Julien Lallouche</span>
+          <a
+            href="https://www.tiktok.com/@julienlallouche"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-display text-sm font-bold underline underline-offset-2 transition hover:text-white/70"
+          >
+            Julien Lallouche
+          </a>
         </div>
 
         {/* Logo court sur mobile (à la place du "réalisé par") */}

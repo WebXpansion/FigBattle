@@ -105,6 +105,7 @@
 },
   "feed": {
     "title": "Feed",
+    "fullscreen": "Plein écran",
     "subtitle": "Vote pour les maquettes de la communauté.",
     "theme": "Thème",
     "currentScore": "Score actuel",
