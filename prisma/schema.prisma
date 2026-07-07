@@ -1,0 +1,194 @@
+// Schéma Prisma — FigBattle
+// Postgres (Supabase). `directUrl` sert aux migrations, `url` au pooling runtime.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// ---------- Auth.js (modèles requis par @auth/prisma-adapter) ----------
+
+model User {
+  id            String    @id @default(cuid())
+  name          String? // pseudo Discord
+  username      String?   @unique
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String? // avatar Discord
+  createdAt     DateTime  @default(now())
+
+  userReportsMade     UserReport[] @relation("UserReportsMade")
+  userReportsReceived UserReport[] @relation("UserReportsReceived")
+
+  // Score cumulé dénormalisé pour un classement rapide à grande échelle.
+  score Float @default(0)
+
+  accounts    Account[]
+  sessions    Session[]
+  submissions Submission[]
+  rounds      Round[]
+  votesCast   Vote[]       @relation("VotesCast")
+  reports     Report[]
+
+  @@index([score])
+}
+
+model UserReport {
+  id             String   @id @default(cuid())
+  reason         String?
+  createdAt      DateTime @default(now())
+
+  reporterId     String
+  reportedUserId String
+
+  reporter       User @relation("UserReportsMade", fields: [reporterId], references: [id], onDelete: Cascade)
+  reportedUser   User @relation("UserReportsReceived", fields: [reportedUserId], references: [id], onDelete: Cascade)
+
+  @@unique([reporterId, reportedUserId])
+  @@index([reportedUserId])
+  @@index([createdAt])
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ---------- Jeu ----------
+
+enum Difficulty {
+  EASY
+  MEDIUM
+  HARD
+}
+
+enum RoundStatus {
+  ACTIVE // manche en cours, chrono qui tourne
+  SUBMITTED // maquette soumise dans les temps
+  EXPIRED // temps écoulé sans soumission
+  ABANDONED // le joueur a abandonné volontairement
+}
+
+// Une manche = une partie solo. Le serveur fait foi sur le temps :
+// startedAt + theme.durationSec définit la deadline réelle.
+model Round {
+  id          String       @id @default(cuid())
+  userId      String
+  themeId     String
+  status      RoundStatus  @default(ACTIVE)
+  startedAt   DateTime     @default(now())
+  endedAt     DateTime? // rempli à la soumission / expiration / abandon
+  durationSec Int // figé au lancement (copie de theme.durationSec)
+
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  theme       Theme        @relation(fields: [themeId], references: [id])
+  submission  Submission?
+
+  @@index([userId, status])
+  // Index unique partiel posé À LA MAIN en SQL (Prisma ne gère pas les index
+  // partiels) : garantit une seule manche ACTIVE par utilisateur.
+  //   CREATE UNIQUE INDEX "round_one_active_per_user"
+  //   ON "Round" ("userId") WHERE status = 'ACTIVE';
+}
+
+enum ThemeCategory {
+  ECOMMERCE
+  SAAS
+  PORTFOLIO
+  BLOG
+  MOBILE
+}
+
+model Theme {
+  id           String        @id @default(cuid())
+  labelFr      String
+  labelEn      String
+  difficulty   Difficulty    @default(MEDIUM)
+  category     ThemeCategory @default(SAAS)
+  durationSec  Int           @default(600)
+  active       Boolean       @default(true)
+  submissions  Submission[]
+  rounds       Round[]
+
+  @@index([active])
+}
+
+model Submission {
+  id        String   @id @default(cuid())
+  userId    String
+  themeId   String
+  roundId   String?  @unique
+  imageUrl  String
+  score      Float    @default(0)
+  voteCount  Int      @default(0)
+  reportCount Int     @default(0)
+  hidden     Boolean  @default(false) // masquée du feed (quarantaine ou admin)
+  createdAt  DateTime @default(now())
+
+  user  User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  theme Theme  @relation(fields: [themeId], references: [id])
+  round   Round?   @relation(fields: [roundId], references: [id])
+  votes   Vote[]
+  reports Report[]
+
+  @@index([userId])
+  @@index([createdAt])
+  @@index([score])
+}
+
+model Vote {
+  id           String   @id @default(cuid())
+  submissionId String
+  voterId      String
+  // 0.5 = Moyen, 1 = Bien, 2 = Excellent
+  value        Float
+  createdAt    DateTime @default(now())
+
+  submission Submission @relation(fields: [submissionId], references: [id], onDelete: Cascade)
+  voter      User       @relation("VotesCast", fields: [voterId], references: [id], onDelete: Cascade)
+
+  // Un seul vote par utilisateur et par soumission.
+  @@unique([submissionId, voterId])
+  @@index([voterId])
+}
+
+model Report {
+  id           String   @id @default(cuid())
+  submissionId String
+  reporterId   String
+  createdAt    DateTime @default(now())
+
+  submission Submission @relation(fields: [submissionId], references: [id], onDelete: Cascade)
+  reporter   User       @relation(fields: [reporterId], references: [id], onDelete: Cascade)
+
+  // Un seul signalement par utilisateur et par maquette.
+  @@unique([submissionId, reporterId])
+  @@index([submissionId])
+}
