@@ -9,6 +9,8 @@ import { GameScreen, type Round } from "@/components/play/GameScreen";
 import { HeroShader } from "@/components/hero/HeroShader";
 import { CinemaBars } from "@/components/play/CinemaBars";
 import { useFocus } from "@/components/play/FocusContext";
+import { useAuthModal } from "@/components/auth/AuthModalContext";
+
 import { Countdown } from "@/components/play/Countdown";
 
 type Phase = "intro" | "drawing" | "countdown" | "playing";
@@ -20,6 +22,8 @@ export default function PlayPage() {
   const locale = useLocale();
   const { data: session, status } = useSession();
   const { setFocus } = useFocus();
+  const { openModal } = useAuthModal();
+
 
   const [phase, setPhase] = useState<Phase>("intro");
   const [themes, setThemes] = useState<CarouselTheme[]>([]);
@@ -57,6 +61,12 @@ export default function PlayPage() {
       cancelled = true;
     };
   }, [status, session?.user?.username]);
+
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      openModal();
+    }
+  }, [status, openModal]);
 
   // Charge la liste des thèmes (pour les cartes) dès que connecté.
   useEffect(() => {
@@ -152,16 +162,11 @@ useEffect(() => {
   };
 
   // Non connecté
-  if (status === "loading") {
-    return <div className="py-24 text-center text-white/60">…</div>;
-  }
-  if (!session?.user) {
+  if (status === "loading" || !session?.user) {
     return (
-      <div className="py-24 text-center">
-        <p className="mb-6 text-white/70">{tFeed("loginToVote")}</p>
-        <Link href="/" className="rounded-full bg-magenta px-6 py-3 font-semibold text-ink">
-          {tNav("signIn")}
-        </Link>
+      <div className="relative flex min-h-screen items-center justify-center overflow-hidden">
+        <HeroShader />
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-ink/20" aria-hidden="true" />
       </div>
     );
   }
