@@ -106,6 +106,7 @@
 },
   "feed": {
     "title": "Feed",
+    "loading": "Chargement des maquettes en cours",
     "fullscreen": "Plein écran",
     "subtitle": "Vote pour les maquettes de la communauté.",
     "theme": "Thème",

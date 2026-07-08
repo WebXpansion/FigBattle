@@ -19,23 +19,23 @@ export type Reward = {
 };
 
 export const REWARDS: Reward[] = [
-  { id: "top1", kind: "top1", title: "PS5", image: "/rewards/ps5.webp", },
+  { id: "top1", kind: "top1", title: "Iphone 17", image: "/rewards/iphone.webp", },
   {
     id: "top2",
     kind: "top2",
-    title: "Série Pro Logitech",
+    title: "PS5",
     image: "/rewards/ps5.webp",
   },
   {
     id: "top3",
     kind: "top3",
-    title: "G305 X SUPERLIGHT",
-    image: "/rewards/ps5.webp",
+    title: "Air Pod 4",
+    image: "/rewards/air-pod.webp",
   },
   {
     id: "most-active",
     kind: "mostActive",
-    title: "PS5",
-    image: "/rewards/ps5.webp",
+    title: "G512 X 75",
+    image: "/rewards/clavier.webp",
   },
 ];

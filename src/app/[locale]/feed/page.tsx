@@ -170,8 +170,8 @@ const cardScrollRef = useRef<HTMLDivElement | null>(null);
           aria-hidden="true"
         />
 
-        <p className="animate-pulse text-center text-sm font-semibold uppercase tracking-[0.3em] text-white/60">
-          Chargement des maquettes en cours
+<p className="animate-pulse text-center text-sm font-semibold uppercase tracking-[0.3em] text-white/60">
+          {t("loading")}
         </p>
       </div>
     );

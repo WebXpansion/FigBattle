@@ -87,6 +87,7 @@
   "feed": {
     "title": "Feed",
     "fullscreen": "Fullscreen",
+    "loading": "Loading mockups",
     "subtitle": "Vote on the community's mockups.",
     "theme": "Theme",
     "currentScore": "Current score",
