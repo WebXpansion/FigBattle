@@ -57,6 +57,7 @@
   },
   "play": {
     "drawing": "Tirage du thème…",
+    "themeHint": "À toi de jouer. Tu as jusqu'à la fin du chrono pour créer ta maquette sur ce thème et la déposer. La communauté votera ensuite pour les meilleurs designs.",
     "helpButton": "Aide",
     "yourTheme": "Ton thème",
     "start": "Lancer le chrono",

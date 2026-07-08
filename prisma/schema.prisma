@@ -124,6 +124,10 @@ enum ThemeCategory {
   PORTFOLIO
   BLOG
   MOBILE
+  FOOD
+  ENTERTAINMENT
+  TRAVEL
+  AUTOMOTIVE
 }
 
 model Theme {

@@ -30,6 +30,7 @@
   },
   "play": {
     "drawing": "Drawing a theme…",
+    "themeHint": "Your turn. You have until the timer runs out to create your mockup for this theme and submit it. The community will then vote for the best designs.",
     "yourTheme": "Your theme",
     "helpButton": "Help",
     "start": "Start the timer",

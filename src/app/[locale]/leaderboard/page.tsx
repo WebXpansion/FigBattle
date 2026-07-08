@@ -1,12 +1,26 @@
+import { unstable_cache } from "next/cache";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
+
 import {
   LeaderboardStrip,
   type LeaderboardPlayer,
 } from "@/components/leaderboard/LeaderboardStrip";
 
 // Formate un rang en ordinal localisé : "4ème" (FR) / "4th" (EN).
+const getTopPlayers = unstable_cache(
+  async () => {
+    return prisma.user.findMany({
+      where: { score: { gt: 0 } },
+      orderBy: [{ score: "desc" }, { id: "asc" }],
+      take: 100,
+      select: { id: true, username: true, name: true, score: true },
+    });
+  },
+  ["leaderboard-top-100"], // clé du cache
+  { revalidate: 30, tags: ["leaderboard"] } // expire toutes les 30s
+);
 function ordinal(n: number, locale: string) {
   if (locale === "en") {
     const rem100 = n % 100;
@@ -35,12 +49,7 @@ export default async function LeaderboardPage({
   const t = await getTranslations("leaderboard");
   const session = await auth();
 
-  const raw = await prisma.user.findMany({
-    where: { score: { gt: 0 } },
-    orderBy: { score: "desc" },
-    take: 100,
-    select: { id: true, username: true, name: true, score: true },
-  });
+  const raw = await getTopPlayers();
 
   const players: LeaderboardPlayer[] = raw.map((p, i) => ({
     ...p,

@@ -223,9 +223,7 @@ export function GameScreen({
                 {label}
               </h1>
               <p className="mt-2 text-sm leading-relaxed text-white/70">
-                Lorem ipsum dolor sit amet consectetur. Ante ornare vitae viverra
-                volutpat facilisi lectus tortor lorem. Etiam nec aliquet nullam
-                interdum.
+                {t("themeHint")}
               </p>
             </div>
 
