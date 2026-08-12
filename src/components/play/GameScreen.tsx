@@ -195,7 +195,7 @@ export function GameScreen({
       <div className="pointer-events-none absolute inset-0 -z-10 bg-ink/20" aria-hidden="true" />
 
       {phase === "running" && (
-        <div className="grid w-full max-w-6xl gap-4 lg:grid-cols-[1.2fr_1fr]">
+        <div className="grid w-full max-w-7xl gap-4 lg:grid-cols-[1.1fr_1fr]">
           {/* Colonne gauche : dépôt d'image */}
           <label className="group relative flex min-h-[60vh] cursor-pointer flex-col items-center justify-center overflow-hidden rounded-3xl border-2 border-dashed border-white/30 bg-white/10 p-8 text-center backdrop-blur-md transition hover:border-white/50">
             <input
@@ -247,28 +247,32 @@ export function GameScreen({
 
             {/* Bloc Meshy : aperçu à gauche + bouton "Voir le glb 3D" à droite,
                 le bouton prend tout l'espace restant. Sous le thème, au-dessus du chrono. */}
+{/* Bloc Meshy : aperçu à gauche + bouton "Voir le glb 3D" à droite,
+                le bouton prend tout l'espace restant. Sous le thème, au-dessus du chrono. */}
             {round.theme.glbUrl && round.theme.glbPreviewUrl && (
-              <div className="flex items-center gap-3">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={round.theme.glbPreviewUrl}
-                  alt=""
-                  className="h-16 w-16 flex-shrink-0 rounded-xl object-cover"
-                />
-                <button
-                  onClick={() => setShow3D(true)}
-                  style={{
-                    height: "64px",
-                    backgroundColor: "white",
-                    color: "black",
-                    borderRadius: "10px",
-                    padding: "0 24px",
-                    textAlign: "center",
-                  }}
-                  className="flex-1 font-display text-sm font-black uppercase transition hover:brightness-95"
-                >
-                  {t("viewGlb")}
-                </button>
+              <div className="flex flex-1 flex-col items-center justify-center rounded-3xl border border-white/15 bg-white/10 p-8 backdrop-blur-md">
+                <div className="flex w-full items-center gap-3">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={round.theme.glbPreviewUrl}
+                    alt=""
+                    className="h-16 w-16 flex-shrink-0 rounded-xl object-cover"
+                  />
+                  <button
+                    onClick={() => setShow3D(true)}
+                    style={{
+                      height: "64px",
+                      backgroundColor: "white",
+                      color: "black",
+                      borderRadius: "10px",
+                      padding: "0 24px",
+                      textAlign: "center",
+                    }}
+                    className="flex-1 font-display text-sm font-black uppercase transition hover:brightness-95"
+                  >
+                    {t("viewGlb")}
+                  </button>
+                </div>
               </div>
             )}
 
