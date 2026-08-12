@@ -8,7 +8,7 @@ export async function GET() {
   if (authResult.response) return authResult.response;
   const themes = await prisma.theme.findMany({
     where: { active: true },
-    select: { id: true, labelFr: true, labelEn: true, category: true },
+    select: { id: true, labelFr: true, labelEn: true, category: true, glbUrl: true },
     orderBy: { id: "asc" },
   });
   return NextResponse.json({ themes });

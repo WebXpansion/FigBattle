@@ -80,10 +80,12 @@ export default function PlayPage() {
             labelFr: string;
             labelEn: string;
             category: CarouselTheme["category"];
+            glbUrl: string | null;
           }) => ({
             id: th.id,
             label: locale === "fr" ? th.labelFr : th.labelEn,
             category: th.category,
+            hasGlb: !!th.glbUrl,
           })
         );
         setThemes(list);

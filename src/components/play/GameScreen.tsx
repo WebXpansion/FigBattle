@@ -7,6 +7,7 @@ import { createClient } from "@supabase/supabase-js";
 import { HeroShader } from "@/components/hero/HeroShader";
 import { SubmissionSuccess } from "@/components/play/SubmissionSuccess";
 import { HelpModal } from "@/components/play/HelpModal";
+import { GlbViewerOverlay } from "@/components/play/GlbViewerOverlay";
 
 import {
   MAX_UPLOAD_BYTES,
@@ -27,6 +28,8 @@ export type Round = {
     labelEn: string;
     difficulty: "EASY" | "MEDIUM" | "HARD";
     category: string;
+    glbUrl: string | null;
+    glbPreviewUrl: string | null;
   };
 };
 
@@ -76,6 +79,7 @@ export function GameScreen({
   // Popup "êtes-vous sûr de vouloir abandonner" + état d'envoi de l'abandon.
   const [showAbandonConfirm, setShowAbandonConfirm] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
+  const [show3D, setShow3D] = useState(false);
 
   const [abandoning, setAbandoning] = useState(false);
   const tickRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -215,8 +219,28 @@ export function GameScreen({
             )}
           </label>
 
+
+
           {/* Colonne droite : thème + chrono */}
           <div className="flex flex-col gap-4">
+
+                      {/* Bloc Meshy : uniquement si le thème a un modèle 3D */}
+          {round.theme.glbUrl && round.theme.glbPreviewUrl && (
+              <button
+                onClick={() => setShow3D(true)}
+                className="flex items-center gap-4 rounded-3xl border border-white/15 bg-white/10 p-4 text-left backdrop-blur-md transition hover:bg-white/15"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={round.theme.glbPreviewUrl}
+                  alt=""
+                  className="h-16 w-16 rounded-xl object-cover"
+                />
+                <span className="font-display text-sm font-black uppercase text-white">
+                  {t("viewGlb")}
+                </span>
+              </button>
+            )}
             {/* Bloc thème */}
             <div className="rounded-3xl border border-white/15 bg-white/10 p-8 backdrop-blur-md">
               <h1 className="font-display text-2xl font-black uppercase leading-tight text-white">
@@ -339,7 +363,12 @@ export function GameScreen({
           </div>
         </div>
       )}
-
+   {show3D && round.theme.glbUrl && (
+        <GlbViewerOverlay
+          glbUrl={round.theme.glbUrl}
+          onClose={() => setShow3D(false)}
+        />
+      )}
          {/* Modale d'aide */}
          <HelpModal open={showHelp} onClose={() => setShowHelp(false)} />
     </div>

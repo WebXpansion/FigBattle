@@ -138,6 +138,8 @@ model Theme {
   category     ThemeCategory @default(SAAS)
   durationSec  Int           @default(600)
   active       Boolean       @default(true)
+  glbUrl        String?
+  glbPreviewUrl String?
   submissions  Submission[]
   rounds       Round[]
 

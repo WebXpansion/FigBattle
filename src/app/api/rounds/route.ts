@@ -10,6 +10,8 @@ const roundThemeSelect = {
   labelEn: true,
   difficulty: true,
   category: true,
+  glbUrl: true,
+  glbPreviewUrl: true,
 } as const;
 
 // Calcule le temps restant (secondes) d'une manche d'après l'horloge serveur.
