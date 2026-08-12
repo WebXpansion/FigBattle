@@ -17,7 +17,7 @@ const themes: {
 
     // MESHY
     {
-      labelFr: "Site Formule 1",
+      labelFr: "Site Formule 2",
       labelEn: "Formula 1 website",
       difficulty: "HARD",
       category: "AUTOMOTIVE",
@@ -36,7 +36,7 @@ const themes: {
     },
      // MESHY
      {
-      labelFr: "Site Formule 1",
+      labelFr: "Site Formule 4",
       labelEn: "Formula 1 website",
       difficulty: "HARD",
       category: "AUTOMOTIVE",
