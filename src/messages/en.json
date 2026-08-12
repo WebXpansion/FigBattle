@@ -39,6 +39,7 @@
     "uploadPrompt": "Drop or select your image",
     "uploadHint": "PNG, JPG or WebP · 5 MB max",
     "changeTheme": "Change theme",
+    "close": "Close",
     "viewGlb": "View 3D glb",
     "loadingModel": "Loading 3D model",
     "screenshot": "Screenshot",

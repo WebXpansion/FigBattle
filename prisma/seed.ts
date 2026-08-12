@@ -22,69 +22,55 @@ const themes: {
       difficulty: "HARD",
       category: "AUTOMOTIVE",
       durationSec: 900,
-      glbUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/f1-concept/bwt_alpine_f1_concept_car.glb",
-      glbPreviewUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/f1-concept/formule1.webp",
-    }, // MESHY
+      glbUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/concept-F1/f1-concept-car.glb",
+      glbPreviewUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/concept-F1/formule1.webp",
+    },
     {
-      labelFr: "Site Formule 1",
+      labelFr: "Site Formule 2",
       labelEn: "Formula 1 website",
       difficulty: "HARD",
       category: "AUTOMOTIVE",
       durationSec: 900,
-      glbUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/f1-concept/bwt_alpine_f1_concept_car.glb",
-      glbPreviewUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/f1-concept/formule1.webp",
+      glbUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/concept-F1/f1-concept-car.glb",
+      glbPreviewUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/concept-F1/formule1.webp",
     },
-     // MESHY
-     {
-      labelFr: "Site Formule 4",
+    {
+      labelFr: "Site Formule 2",
       labelEn: "Formula 1 website",
       difficulty: "HARD",
       category: "AUTOMOTIVE",
       durationSec: 900,
-      glbUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/f1-concept/bwt_alpine_f1_concept_car.glb",
-      glbPreviewUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/f1-concept/formule1.webp",
+      glbUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/concept-F1/f1-concept-car.glb",
+      glbPreviewUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/concept-F1/formule1.webp",
     },
-     // MESHY
-     {
-      labelFr: "Site Formule 1",
+    {
+      labelFr: "Site Formule 2",
       labelEn: "Formula 1 website",
       difficulty: "HARD",
       category: "AUTOMOTIVE",
       durationSec: 900,
-      glbUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/f1-concept/bwt_alpine_f1_concept_car.glb",
-      glbPreviewUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/f1-concept/formule1.webp",
+      glbUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/concept-F1/f1-concept-car.glb",
+      glbPreviewUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/concept-F1/formule1.webp",
     },
-     // MESHY
-     {
-      labelFr: "Site Formule 1",
+    {
+      labelFr: "Site Formule 2",
       labelEn: "Formula 1 website",
       difficulty: "HARD",
       category: "AUTOMOTIVE",
       durationSec: 900,
-      glbUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/f1-concept/bwt_alpine_f1_concept_car.glb",
-      glbPreviewUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/f1-concept/formule1.webp",
+      glbUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/concept-F1/f1-concept-car.glb",
+      glbPreviewUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/concept-F1/formule1.webp",
+    },
+    {
+      labelFr: "Site Formule 2",
+      labelEn: "Formula 1 website",
+      difficulty: "HARD",
+      category: "AUTOMOTIVE",
+      durationSec: 900,
+      glbUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/concept-F1/f1-concept-car.glb",
+      glbPreviewUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/concept-F1/formule1.webp",
     },
     
-     // MESHY
-     {
-      labelFr: "Site Formule 1",
-      labelEn: "Formula 1 website",
-      difficulty: "HARD",
-      category: "AUTOMOTIVE",
-      durationSec: 900,
-      glbUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/f1-concept/bwt_alpine_f1_concept_car.glb",
-      glbPreviewUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/f1-concept/formule1.webp",
-    },
-     // MESHY
-     {
-      labelFr: "Site Formule 1",
-      labelEn: "Formula 1 website",
-      difficulty: "HARD",
-      category: "AUTOMOTIVE",
-      durationSec: 900,
-      glbUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/f1-concept/bwt_alpine_f1_concept_car.glb",
-      glbPreviewUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/f1-concept/formule1.webp",
-    },
 
 ];
 
