@@ -23,7 +23,7 @@ const themes: {
       category: "AUTOMOTIVE",
       durationSec: 900,
       glbUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/concept-F1/f1-concept-car.glb",
-      glbPreviewUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/concept-F1/formule1.webp",
+      glbPreviewUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/concept-F1/F1.webp",
     },
     {
       labelFr: "Site Formule 2",
@@ -32,44 +32,9 @@ const themes: {
       category: "AUTOMOTIVE",
       durationSec: 900,
       glbUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/concept-F1/f1-concept-car.glb",
-      glbPreviewUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/concept-F1/formule1.webp",
+      glbPreviewUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/concept-F1/F1.webp",
     },
-    {
-      labelFr: "Site Formule 2",
-      labelEn: "Formula 1 website",
-      difficulty: "HARD",
-      category: "AUTOMOTIVE",
-      durationSec: 900,
-      glbUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/concept-F1/f1-concept-car.glb",
-      glbPreviewUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/concept-F1/formule1.webp",
-    },
-    {
-      labelFr: "Site Formule 2",
-      labelEn: "Formula 1 website",
-      difficulty: "HARD",
-      category: "AUTOMOTIVE",
-      durationSec: 900,
-      glbUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/concept-F1/f1-concept-car.glb",
-      glbPreviewUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/concept-F1/formule1.webp",
-    },
-    {
-      labelFr: "Site Formule 2",
-      labelEn: "Formula 1 website",
-      difficulty: "HARD",
-      category: "AUTOMOTIVE",
-      durationSec: 900,
-      glbUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/concept-F1/f1-concept-car.glb",
-      glbPreviewUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/concept-F1/formule1.webp",
-    },
-    {
-      labelFr: "Site Formule 2",
-      labelEn: "Formula 1 website",
-      difficulty: "HARD",
-      category: "AUTOMOTIVE",
-      durationSec: 900,
-      glbUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/concept-F1/f1-concept-car.glb",
-      glbPreviewUrl: "https://pknrhxcnipjajdrkblhs.supabase.co/storage/v1/object/public/theme-assets/concept-F1/formule1.webp",
-    },
+   
     
 
 ];
