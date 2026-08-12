@@ -71,17 +71,29 @@ export function GlbViewerOverlay({
         className="relative h-[75vh] w-full max-w-3xl overflow-hidden rounded-3xl border border-white/15 bg-white/5"
         onClick={(e) => e.stopPropagation()}
       >
-        {scriptReady && (
-          <model-viewer
-            ref={viewerRef as React.RefObject<HTMLElement>}
-            src={glbUrl}
-            camera-controls
-            exposure="1"
-            shadow-intensity="0.6"
-            style={{ width: "100%", height: "100%", backgroundColor: "transparent" }}
-            onLoad={() => setLoading(false)}
-          />
-        )}
+{scriptReady &&
+          (() => {
+            const ModelViewer = "model-viewer" as unknown as React.FC<
+              React.HTMLAttributes<HTMLElement> & {
+                ref?: React.Ref<HTMLElement>;
+                src?: string;
+                "camera-controls"?: boolean;
+                exposure?: string;
+                "shadow-intensity"?: string;
+              }
+            >;
+            return (
+              <ModelViewer
+                ref={viewerRef}
+                src={glbUrl}
+                camera-controls
+                exposure="1"
+                shadow-intensity="0.6"
+                style={{ width: "100%", height: "100%", backgroundColor: "transparent" }}
+                onLoad={() => setLoading(false)}
+              />
+            );
+          })()}
 
         {loading && (
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
