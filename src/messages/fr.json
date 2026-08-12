@@ -78,6 +78,8 @@
     "loadingModel": "Chargement du modèle 3D",
     "screenshot": "Screenshot",
     "difficulty": "Difficulté",
+    "use3DInMockup": "Utilise la 3D dans la maquette",
+    "rotateHint": "Fais pivoter pour voir le modèle en 3D",
     "easy": "Facile",
     "medium": "Moyen",
     "hard": "Difficile",

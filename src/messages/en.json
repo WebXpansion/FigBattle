@@ -41,6 +41,8 @@
     "changeTheme": "Change theme",
     "close": "Close",
     "viewGlb": "View 3D glb",
+    "use3DInMockup": "Use the 3D in your mockup",
+    "rotateHint": "Rotate to see the 3D",
     "loadingModel": "Loading 3D model",
     "screenshot": "Screenshot",
     "invalidType": "Format not allowed (PNG, JPG or WebP only).",

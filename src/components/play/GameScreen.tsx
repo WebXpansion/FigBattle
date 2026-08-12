@@ -232,12 +232,11 @@ export function GameScreen({
                 href="https://www.meshy.ai/fr/discover"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="absolute right-6 top-6 flex h-10 w-[140px] items-center justify-center rounded-full px-3.5 py-1.5"
-                style={{ background: "#C5F955" }}
+                className="absolute right-4 top-4 flex h-8 w-[90px] items-center justify-center rounded-full px-2.5 py-1 sm:right-6 sm:top-6 sm:h-10 sm:w-[140px] sm:px-3.5 sm:py-1.5"                style={{ background: "#C5F955" }}
                 dangerouslySetInnerHTML={{ __html: MESHY_BADGE_SVG }}
               />
             )}
-              <h1 className="font-display text-2xl font-black uppercase leading-tight text-white">
+<h1 className="font-display text-lg font-black uppercase leading-tight text-white sm:text-2xl">
                 {label}
               </h1>
               <p className="mt-2 text-sm leading-relaxed text-white/70">
@@ -249,23 +248,29 @@ export function GameScreen({
                 le bouton prend tout l'espace restant. Sous le thème, au-dessus du chrono. */}
 {/* Bloc Meshy : aperçu à gauche + bouton "Voir le glb 3D" à droite,
                 le bouton prend tout l'espace restant. Sous le thème, au-dessus du chrono. */}
+{/* Bloc Meshy : titre, puis aperçu à gauche + bouton à droite.
+                Sous le thème, au-dessus du chrono. */}
             {round.theme.glbUrl && round.theme.glbPreviewUrl && (
-              <div className="flex flex-1 flex-col items-center justify-center rounded-3xl border border-white/15 bg-white/10 p-8 backdrop-blur-md">
+              <div className="flex flex-col rounded-3xl border border-white/15 bg-white/10 p-4 backdrop-blur-md">
+                <p className="mb-3 font-display text-sm font-black uppercase text-white">
+                  {t("use3DInMockup")}
+                </p>
                 <div className="flex w-full items-center gap-3">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={round.theme.glbPreviewUrl}
                     alt=""
-                    className="h-16 w-16 flex-shrink-0 rounded-xl object-cover"
+                    className="h-14 w-14 flex-shrink-0 rounded-xl object-cover p-1.5"
+                    style={{ border: "1px solid #FFFFFF40" }}
                   />
                   <button
                     onClick={() => setShow3D(true)}
                     style={{
-                      height: "64px",
+                      height: "48px",
                       backgroundColor: "white",
                       color: "black",
                       borderRadius: "10px",
-                      padding: "0 24px",
+                      padding: "0 20px",
                       textAlign: "center",
                     }}
                     className="flex-1 font-display text-sm font-black uppercase transition hover:brightness-95"

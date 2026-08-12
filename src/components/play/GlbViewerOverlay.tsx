@@ -81,14 +81,17 @@ export function GlbViewerOverlay({
       </button>
 
       <div
-        className="relative h-[75vh] w-full max-w-3xl overflow-hidden rounded-3xl border border-white/15 bg-white/5"
+        className="relative h-[85vh] w-full max-w-3xl overflow-hidden rounded-3xl border border-white/15 bg-white/5 sm:h-[75vh]"
         onClick={(e) => e.stopPropagation()}
       >
+        <p className="absolute left-4 top-4 z-10 text-xs font-semibold uppercase tracking-wide text-white/60">
+          {t("rotateHint")}
+        </p>
         <a
           href="https://www.meshy.ai/fr/discover"
           target="_blank"
           rel="noopener noreferrer"
-          className="absolute right-4 top-4 z-10 flex h-10 w-[140px] items-center justify-center rounded-full px-3.5 py-1.5"
+                className="absolute right-4 top-4 flex h-8 w-[90px] items-center justify-center rounded-full px-2.5 py-1 sm:right-6 sm:top-6 sm:h-10 sm:w-[140px] sm:px-3.5 sm:py-1.5"
           style={{ background: "#C5F955" }}
           dangerouslySetInnerHTML={{ __html: MESHY_BADGE_SVG }}
         ></a>
