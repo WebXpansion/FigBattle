@@ -81,7 +81,7 @@ export function ThemeCarousel({
       const el = document.createElement("div");
       el.className = "tc-card";
       const badge = t.hasGlb
-      ? `<div class="tc-badge">${MESHY_MARK}</div>`
+      ? `<a class="tc-badge" href="https://www.meshy.ai/fr/discover" target="_blank" rel="noopener noreferrer">${MESHY_MARK}</a>`
       : "";
     el.innerHTML = `<div class="tc-glass">${badge}<div class="tc-icon">${iconSVG(t.category)}</div><div class="tc-title">${t.label}</div></div>`;
       rail.appendChild(el);

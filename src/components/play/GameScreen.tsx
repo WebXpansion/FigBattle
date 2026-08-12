@@ -223,16 +223,20 @@ export function GameScreen({
 
 
           {/* Colonne droite : thème + chrono */}
+          {/* Colonne droite : thème + chrono */}
           <div className="flex flex-col gap-4">
-            {/* Bloc thème (badge Meshy en haut à droite si applicable) */}
+            {/* Bloc thème (badge Meshy en haut à droite, cliquable) */}
             <div className="relative rounded-3xl border border-white/15 bg-white/10 p-8 backdrop-blur-md">
-              {round.theme.glbUrl && (
-                <div
-                  className="absolute right-6 top-6 flex h-10 w-[140px] items-center justify-center rounded-full px-3.5 py-1.5"
-                  style={{ background: "#C5F955" }}
-                  dangerouslySetInnerHTML={{ __html: MESHY_BADGE_SVG }}
-                />
-              )}
+            {round.theme.glbUrl && (
+                <a
+                href="https://www.meshy.ai/fr/discover"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute right-6 top-6 flex h-10 w-[140px] items-center justify-center rounded-full px-3.5 py-1.5"
+                style={{ background: "#C5F955" }}
+                dangerouslySetInnerHTML={{ __html: MESHY_BADGE_SVG }}
+              />
+            )}
               <h1 className="font-display text-2xl font-black uppercase leading-tight text-white">
                 {label}
               </h1>
@@ -240,6 +244,33 @@ export function GameScreen({
                 {t("themeHint")}
               </p>
             </div>
+
+            {/* Bloc Meshy : aperçu à gauche + bouton "Voir le glb 3D" à droite,
+                le bouton prend tout l'espace restant. Sous le thème, au-dessus du chrono. */}
+            {round.theme.glbUrl && round.theme.glbPreviewUrl && (
+              <div className="flex items-center gap-3">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={round.theme.glbPreviewUrl}
+                  alt=""
+                  className="h-16 w-16 flex-shrink-0 rounded-xl object-cover"
+                />
+                <button
+                  onClick={() => setShow3D(true)}
+                  style={{
+                    height: "64px",
+                    backgroundColor: "white",
+                    color: "black",
+                    borderRadius: "10px",
+                    padding: "0 24px",
+                    textAlign: "center",
+                  }}
+                  className="flex-1 font-display text-sm font-black uppercase transition hover:brightness-95"
+                >
+                  {t("viewGlb")}
+                </button>
+              </div>
+            )}
 
             {/* Bloc chrono */}
             <div className="flex flex-1 flex-col items-center justify-center rounded-3xl border border-white/15 bg-white/10 p-8 backdrop-blur-md">
@@ -254,25 +285,6 @@ export function GameScreen({
                 {format(remaining)}
               </p>
             </div>
-
-            {/* Bloc Meshy : le bouton "Voir le glb 3D", sous le chrono */}
-            {round.theme.glbUrl && round.theme.glbPreviewUrl && (
-              <button
-                onClick={() => setShow3D(true)}
-                style={{
-                  height: "64px",
-                  backgroundColor: "white",
-                  color: "black",
-                  borderRadius: "10px",
-                  padding: "24px",
-                  width: "100%",
-                  textAlign: "center",
-                }}
-                className="font-display text-sm font-black uppercase transition hover:brightness-95"
-              >
-                {t("viewGlb")}
-              </button>
-            )}
 
             {/* Bouton submit : apparaît après dépôt */}
             {file && (
