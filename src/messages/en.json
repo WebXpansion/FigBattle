@@ -40,7 +40,7 @@
     "uploadHint": "PNG, JPG or WebP · 5 MB max",
     "changeTheme": "Change theme",
     "close": "Close",
-    "viewGlb": "View 3D glb",
+    "viewGlb": "View the 3D model",
     "use3DInMockup": "Use the 3D in your mockup",
     "rotateHint": "Rotate to see the 3D",
     "loadingModel": "Loading 3D model",
